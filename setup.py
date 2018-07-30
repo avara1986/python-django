@@ -1,5 +1,11 @@
+import codecs
 from setuptools import setup
 import versioneer
+
+if os.path.exists('README.rst'):
+    long_description = codecs.open('README.rst', 'r', 'utf-8').read()
+else:
+    long_description = ''
 
 version=versioneer.get_version()
 setup(
@@ -12,7 +18,7 @@ setup(
     author='Kathy Camenzind',
     author_email='kcamenzind@lightstep.com',
     description='OpenTracing support for Django applications',
-    long_description=open('README.rst').read(),
+    long_description=long_description,
     packages=['django_opentracing', 'tests'],
     platforms='any',
     install_requires=[
